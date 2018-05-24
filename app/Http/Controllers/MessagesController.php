@@ -47,6 +47,7 @@ class MessagesController extends Controller
     {   
         
         $this->validate($request, [
+            'title' => 'required|max:191',
             'content' => 'required|max:191',   
         ]);
         
@@ -62,6 +63,7 @@ class MessagesController extends Controller
         
         // $requestは$_POST的な感じ
         $message = new Message;
+        $message->title = $request->title;
         $message->content = $request->content;
         $message->save();
         
@@ -117,11 +119,13 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
+            'title' => 'required|max:191',
             'content' => 'required|max:191',    
         ]);
         
         // $request->all();で投稿された値が見れる
         $message = Message::find($id);
+        $message->title = $request->title;
         $message->content = $request->content;
         $message->save();
         

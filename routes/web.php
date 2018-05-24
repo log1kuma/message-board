@@ -29,7 +29,6 @@ Route::put('messages/{id}', 'MessagesController@update');
 
 Route::get('/', 'MessagesController@index');
 Route::resource('messages', 'MessagesController');
-Route::get('messages/{message}/{content}', 'MessagesController@show')->name('messages.see');
 
 /*
 // URI*Requestメソッドの組み合わせ毎に何を行うかを判断する

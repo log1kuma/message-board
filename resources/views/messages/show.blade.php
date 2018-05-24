@@ -3,7 +3,8 @@
 @section('content')
 
     <h1>id = {{ $message->id }} のメッセージ詳細ページ</h1>
-    <p>{{ $message->content }}</p>
+    <h3>タイトル : {{ $message->title }}</h3>
+    <p>メッセージ : {{ $message->content }}</p>
     
     {!! link_to_route('messages.edit', 'このメッセージを編集', ['id' => $message->id]) !!}
     
