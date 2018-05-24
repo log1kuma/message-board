@@ -11,4 +11,4 @@
         {!! Form::submit('削除') !!}
     {!! Form::close() !!}
 
-@endsectionz
+@endsection

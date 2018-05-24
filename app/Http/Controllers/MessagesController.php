@@ -44,7 +44,22 @@ class MessagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        
+        $this->validate($request, [
+            'content' => 'required|max:191',   
+        ]);
+        
+        /*
+        $messages = [
+          'required' => ':attribute は必須です。'  
+        ];
+        
+        $this->validate($request, [
+            'content' => 'required|max:191',   
+        ], $messages);
+        */
+        
         // $requestは$_POST的な感じ
         $message = new Message;
         $message->content = $request->content;
@@ -52,7 +67,7 @@ class MessagesController extends Controller
         
         //dump($request->method());
         
-        $messages = Message::all();
+        //$messages = Message::all();
         
         return redirect('/');
         /*
@@ -101,6 +116,10 @@ class MessagesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'content' => 'required|max:191',    
+        ]);
+        
         // $request->all();で投稿された値が見れる
         $message = Message::find($id);
         $message->content = $request->content;
